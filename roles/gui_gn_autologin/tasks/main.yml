@@ -1,0 +1,26 @@
+---
+
+- name: GUI autologin gn user 
+  lineinfile:
+    path: /etc/lightdm/lightdm.conf
+    regexp: '^autologin-user='
+    line: autologin-user=gn
+
+- name: Create directory for gn lxsession config
+  file:
+    path: /home/gn/.config/lxsession/LXDE-pi/
+    state: directory
+    recurse: yes
+    owner: gn
+    group: gn
+    mode: '0755'
+
+- name: Copy autostart file for gn user
+  copy:
+    src: autostart
+    dest: /home/gn/.config/lxsession/LXDE-pi/
+    owner: gn
+    group: gn
+    mode: '0755'
+  notify:
+    - restart lightdm

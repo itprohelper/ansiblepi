@@ -1,0 +1,16 @@
+---
+
+- name: sshd config options
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: '{{ item.state }}'
+    line: '{{ item.line }}'
+    validate: 'sshd -t -f %s'
+  with_items:
+    - {state: 'present', line: 'Port 12344' }
+    - {state: 'present', line: 'PasswordAuthentication no' }
+    - {state: 'absent', line: 'PasswordAuthentication yes' }
+    - {state: 'present', line: 'PermitTunnel yes' }
+    - {state: 'present', line: 'AllowTcpForwarding yes' }
+    - {state: 'absent', line: 'Port 22' }
+  notify: restart ssh

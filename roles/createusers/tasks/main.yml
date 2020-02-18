@@ -1,0 +1,33 @@
+---
+# User gn
+
+- name: Create gn account
+  user:
+    name: gn
+    shell: /bin/bash
+    uid: 4000
+    home: /home/gn
+    password: $6$I6crRW.XYJNmsON$Owm8IY25y1dFuLbTwRAL25FMThHvN608h24VNpnPUHQ7lkxdCPokh87rpH.qM0Yew5347UBelzR6YkOb.GOZG/
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+
+# User sbsadmin
+
+- name: Create sbsadmin account
+  user:
+    name: sbsadmin
+    shell: /bin/bash
+    uid: 4099
+    home: /home/sbsadmin
+    groups: sudo
+    password: $6$o0j68oJb$lmSPWgJiszBHhIdZdk4H/bDFdr8Mw0WUlleQVUgWA32cFijRqy2cVYtcti..vqj27peDdzX5vQefURREWb8Fb1
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+  
+- name: Setup user sbsadmin ssh authorized_keys file
+  authorized_key:
+    user: sbsadmin
+    exclusive: yes
+    key: "{{ lookup('template', 'ssh_pubkey_sbsadmin.pub') }}"
+  ignore_errors: "{{ ansible_check_mode }}"
+

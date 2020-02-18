@@ -1,0 +1,7 @@
+[all:vars]
+ansible_user=sbsadmin
+ansible_ssh_pass=tar6*down
+ansible_port=12344
+
+[pi]
+testberry2 ansible_host=10.13.13.184

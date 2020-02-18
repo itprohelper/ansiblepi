@@ -1,0 +1,17 @@
+---
+- name: update apt
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: install packages
+  apt:
+    pkg:
+    - tmux
+    - vim
+    - unclutter
+    - openvpn
+
+- name: remove dependencies that are no longer required
+  apt:
+    autoremove: yes

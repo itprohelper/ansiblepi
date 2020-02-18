@@ -1,0 +1,9 @@
+---
+
+- name: disable pi user
+  user:
+    name: pi
+    shell: /bin/false
+    password_lock: yes
+
+

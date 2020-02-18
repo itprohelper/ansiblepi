@@ -1,0 +1,5 @@
+# restart lightdm service
+- name: restart lightdm
+  service:
+    name: lightdm
+    state: restarted

@@ -1,0 +1,9 @@
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+@point-rpi
+@xset s off
+@xset -dpms
+@xset s noblank
+@unclutter -idle 0.1 -root
+@chromium-browser --noerrdialogs --kiosk --incognito --disable-pinch --overscroll-history-navigation=0 http://www.garagenet.com/

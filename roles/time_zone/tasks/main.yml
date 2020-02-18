@@ -1,0 +1,5 @@
+---
+
+- name: Configure time zone
+  command: timedatectl set-timezone America/New_York
+  become: yes

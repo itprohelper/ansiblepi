@@ -1,0 +1,15 @@
+---
+# This is a test playbook for raspberry
+- name: apply common config to all pi
+  hosts: all
+  become: yes
+
+  roles:
+    - createusers
+    - disable_pi_user
+    - autossh
+    - gui_gn_autologin
+    - time_zone
+    - package_installs
+
+      
